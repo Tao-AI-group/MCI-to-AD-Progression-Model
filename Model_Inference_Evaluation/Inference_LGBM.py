@@ -151,7 +151,7 @@ if __name__ == "__main__":
             
             # Print classification report
             print('\nClassification Report:')
-            print(classification_report(labels_tr, y_pred))
+            print(classification_report(labels_t, y_pred))
             
             #Calculate all measures
             auc= roc_auc_score(labels_t, y_score)
