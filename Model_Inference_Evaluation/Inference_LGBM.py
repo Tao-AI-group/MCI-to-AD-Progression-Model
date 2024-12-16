@@ -88,6 +88,9 @@ if __name__ == "__main__":
     results_output_path = func.get_common_path('../../Test_results_no_censored/') + '/' + str(days_before_index_date) + '/'
     
     selected_list = ['Results_1d_365d_window']
+    #selected_list = ['Results_1d_730d_window']
+    #selected_list = ['Results_1d_1095d_window']
+    #selected_list = ['Results_1d_1825d_window']
   
     tuning_results_list = []
     para_value_list = []
