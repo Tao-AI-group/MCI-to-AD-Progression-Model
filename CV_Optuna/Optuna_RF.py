@@ -154,7 +154,7 @@ if __name__ == "__main__":
         print(f'{idx_folder+1}. Start RF hyperparameter tuning for {specific_folder_name}, time is {datetime.now()}', '\n')
         results_list = []
         study = optuna.create_study(direction="maximize")
-        study.optimize(objective_RF, n_trials=50)
+        study.optimize(objective_RF, n_trials=100)
 
         # Log results
         print("\nOptimization Results:")
