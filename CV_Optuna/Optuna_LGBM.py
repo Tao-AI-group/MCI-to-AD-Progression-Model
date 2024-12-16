@@ -42,7 +42,7 @@ def load_input_pkl(common_path):
         
     return pkl_result_list[0], pkl_result_list[1], pkl_result_list[2], pkl_result_list[3]
 
-def prepare_features(train_sl: List, valid_sl: List, test_sl: List, input_size_1: List) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def prepare_features(train_sl: List, valid_sl: List, input_size_1: List) -> Tuple[np.ndarray, np.ndarray]:
     """Prepare features for model training."""
     # Process training and validation data
     pts_tr, labels_tr, features_tr = [], [], []
@@ -54,18 +54,8 @@ def prepare_features(train_sl: List, valid_sl: List, test_sl: List, input_size_1
             x.extend(v[-1])
         features_tr.append(x)
     
-    # Process test data
-    pts_t, labels_t, features_t = [], [], []
-    for pt in test_sl:                  
-        pts_t.append(pt[0])
-        labels_t.append(pt[1])
-        x = []
-        for v in pt[-1]:
-            x.extend(v[-1])
-        features_t.append(x)    
-
     mlb = MultiLabelBinarizer(classes=range(input_size_1[0])[1:])
-    return mlb.fit_transform(features_tr), np.array(labels_tr), mlb.fit_transform(features_t)
+    return mlb.fit_transform(features_tr), mlb.fit_transform(features_t)
 
 def objective_LGBM(trial):
     """Optuna objective function for LightGBM optimization."""
@@ -141,7 +131,7 @@ if __name__ == "__main__":
 
         # Prepare features
         input_size_1 = [len(types_d_rev) + 1]
-        nfeatures_tr, labels_tr, nfeatures_t = prepare_features(train_sl, valid_sl, test_sl, input_size_1)
+        nfeatures_tr, labels_tr = prepare_features(train_sl, valid_sl, input_size_1)
         
         
         # Optimize model
