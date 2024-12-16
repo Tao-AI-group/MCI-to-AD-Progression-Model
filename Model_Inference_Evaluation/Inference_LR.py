@@ -48,7 +48,7 @@ def time_consumption_since(since):
     s -= m * 60
     return '%dm %ds' % (m, s)
 
-def prepare_features(train_sl: List, valid_sl: List, test_sl: List, input_size_1: List) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+def prepare_train_and_test_features(train_sl: List, valid_sl: List, test_sl: List, input_size_1: List) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """Prepare features and labels for model training and testing."""
     # Process training and validation data
     pts_tr, labels_tr, features_tr = [], [], []
@@ -65,7 +65,7 @@ def prepare_features(train_sl: List, valid_sl: List, test_sl: List, input_size_1
         features_t.append([code for v in pt[-1] for code in v[-1]])
 
     mlb = MultiLabelBinarizer(classes=range(input_size_1[0])[1:])
-    return mlb.fit_transform(features_tr), np.array(labels_tr), mlb.fit_transform(features_t), np.array(labels_t)
+    return mlb.fit_transform(features_tr), np.array(labels_tr), mlb.transform(features_t), np.array(labels_t)
 
 def load_input_pkl(common_path):
     """Load train, test, validation and type mapping data from pickle files."""
@@ -106,16 +106,15 @@ if __name__ == "__main__":
 
         # Prepare features
         input_size_1 = [len(types_d_rev) + 1]
-        nfeatures_tr, labels_tr, nfeatures_t, labels_t = prepare_features(train_sl, valid_sl, test_sl, input_size_1)
+        nfeatures_tr, labels_tr, nfeatures_t, labels_t = prepare_train_and_test_features(train_sl, valid_sl, test_sl, input_size_1)
         
           
         to_infere_LR_results_label = 1
         if  to_infere_LR_results_label:
             
             # Fit the best model on the train+validation data and save the model
-            # create the .csv file to generate ['classifiers', 'fpr','tpr','auc', 'auprc']
             
-            #Define optimal prameters
+            # Define optimal prameters
             logreg_c = 0.003421
             
             # Initialize and train model
@@ -145,26 +144,7 @@ if __name__ == "__main__":
             precision, recall, fscore, support = precision_recall_fscore_support(labels_t, y_pred, average = 'binary')
             precision_weighted, recall_weighted, fscore_weighted, _ = \
                 precision_recall_fscore_support(labels_t, y_pred, average='weighted')
-
-            # Calculate confusion matrix metrics    
-            tn, fp, fn, tp = confusion_matrix(labels_t, y_pred).ravel()
-            specificity = tn / (tn+fp)
-    
-            # Save results
-            result_table = pd.DataFrame(columns=['classifiers', 'fpr', 'tpr', 'auc', 'auprc'])
-            fpr, tpr, _ = roc_curve(labels_t, y_score)
             
-            result_table = result_table.append({
-                'classifiers': "LR",
-                'fpr': fpr.tolist(),
-                'tpr': tpr.tolist(),
-                'auc': auc,
-                'auprc': auprc
-            }, ignore_index=True)
-
-
-            result_table.set_index('classifiers', inplace=True)
-            result_table.to_csv(results_output_path + "result_table_LR_MCI_1d_365d.csv", index=False)
             
         # Bootstrap performance evaluation 
         to_calculate_bootstrapped_performance = 0
