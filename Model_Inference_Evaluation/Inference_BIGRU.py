@@ -223,8 +223,7 @@ if __name__ == "__main__":
         to_infere_BiGRU_results_label = 0
         if  to_infere_BiGRU_results_label:
             
-            #Fit the best model on the train+validation data and save the model in the test_results folder
-            #create the .csv file to generate ['classifiers', 'fpr','tpr','auc', 'auprc']
+            # Fit the best model on the train+validation data and save the model in the test_results folder
             
             # Define optimal parameters
             params = {
@@ -284,25 +283,6 @@ if __name__ == "__main__":
             precision, recall, fscore, _ = precision_recall_fscore_support(RNN_real_label, RNN_predicted_class_label, average='binary')
             precision_weighted, recall_weighted, fscore_weighted, _ = precision_recall_fscore_support(RNN_real_label, RNN_predicted_class_label, average='weighted')
             
-            # Calculate confusion matrix metrics
-            tn, fp, fn, tp = confusion_matrix(RNN_real_label, RNN_predicted_class_label).ravel()
-            specificity = tn / (tn + fp)
-
-            # Save results
-            result_table = pd.DataFrame(columns=['classifiers', 'fpr','tpr','auc', 'auprc' ])
-            fpr, tpr, ths = m.roc_curve(RNN_real_label, RNN_predicted_label)
-            
-            
-            result_table = result_table.append({
-                'classifiers': "BiGRU",
-                'fpr': fpr.tolist(),
-                'tpr': tpr.tolist(),
-                'auc': auc,
-                'auprc': auprc
-            }, ignore_index=True)
-            
-            result_table.set_index('classifiers', inplace=True)
-            result_table.to_csv(results_output_path + "result_table_MCI_1d_365d.csv", index=False)
             
         # Bootstrap performance evaluation    
         to_calculate_bootstrapped_performance = 1
