@@ -119,7 +119,7 @@ if __name__ == "__main__":
     days_before_index_date = 1825
     part_common_path = get_common_path('../../../Results_new_no_censored/') + output_folder_name + '/'
     
-    selected_list = ['Results_1d_1825d_window']
+    selected_list = ['Results_1d_365d_window']
     specific_folder_name = selected_list[0]
     #selected_list = ['Results_1d_730d_window']
     #selected_list = ['Results_1d_1095d_window']
