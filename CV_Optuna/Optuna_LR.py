@@ -30,15 +30,17 @@ def get_common_path(relative_path: str) -> str:
     cur_path = os.path.dirname(os.path.realpath(__file__))
     return os.path.join(cur_path, relative_path)
 
-def load_input_pkl(common_path: str) -> Tuple[List, List, List, Dict]:
-    """Load data from pickle files."""
+def load_input_pkl(common_path):
+    """Load train, test, validation and type mapping data from pickle files."""
     pkl_result_list = []
-    input_name_list = ['.combined.train4', '.combined.test4', '.combined.valid4', '.types']   
+    input_name_list = ['.combined.train', '.combined.test', '.combined.valid', '.types']   
+    
     for name in input_name_list:
-        input_path = common_path + "lt" + name
+        input_path = common_path + "ad" + name
         pkl_result = pickle.load(open(input_path, 'rb'), encoding='bytes')
         pkl_result_list.append(pkl_result)
-    return tuple(pkl_result_list)
+        
+    return pkl_result_list[0], pkl_result_list[1], pkl_result_list[2], pkl_result_list[3]
 
 def prepare_features(train_sl: List, valid_sl: List, test_sl: List, input_size_1: List) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Prepare features for model training."""
