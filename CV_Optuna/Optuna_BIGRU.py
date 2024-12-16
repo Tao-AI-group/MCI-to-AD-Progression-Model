@@ -258,7 +258,6 @@ if __name__ == "__main__":
     output_folder_name = 'Results_15_final_new'
     days_before_index_date = 1825
     part_common_path = get_common_path('../../../Results_new_no_censored/') + output_folder_name + '/'
-    #results_output_path = func.get_common_path('../../Test_results_no_censored/') + '/' + str(days_before_index_date) + '/'
     
     print('Running BiGRU optimization')
     selected_list = ['Results_1d_365d_window']
