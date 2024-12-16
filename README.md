@@ -34,8 +34,8 @@ The progression from Mild Cognitive Impairment (MCI) to Alzheimer’s Disease (A
 - **Optimize model performance using Optuna:**  
   Hyperparameter tuning is automated with Optuna, ensuring optimal model configurations and improved predictive accuracy.
 
-- **Generate metrics and visualizations:**  
-  The pipeline outputs performance metrics and visual representations of the results, helping users assess and interpret the predictive capabilities of the models.
+- **Generate metrics**  
+  The pipeline outputs performance metrics, helping users assess and interpret the predictive capabilities of the models.
 
 This repository is designed to accommodate various lookback windows (e.g., 365 days, 730 days, etc.) before the index date. By adjusting these time windows, users can tailor prediction horizons and patient stratification strategies based on disease onset.
 
