@@ -122,8 +122,6 @@ if __name__ == "__main__":
     days_before_index_date = 1825
     part_common_path = get_common_path('../../../Results_new_no_censored/') + output_folder_name + '/'
     
-    
-    print('Run trained LGBM and get the best model')
     selected_list = ['Results_1d_365d_window']
     #selected_list = ['Results_1d_730d_window']
     #selected_list = ['Results_1d_1095d_window']
