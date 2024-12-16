@@ -87,7 +87,6 @@ if __name__ == "__main__":
     part_common_path = get_common_path('../../../Results_new_no_censored/') + output_folder_name + '/'
     results_output_path = func.get_common_path('../../Test_results_no_censored/') + '/' + str(days_before_index_date) + '/'
     
-    print('Run trained LGBM and get the best model')
     selected_list = ['Results_1d_365d_window']
   
     tuning_results_list = []
