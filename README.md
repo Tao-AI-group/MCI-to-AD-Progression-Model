@@ -8,10 +8,6 @@ This repository provides code and pipelines for predicting the progression from 
 - [Overview](#overview)
 - [Repository Structure](#repository-structure)
 - [Requirements](#requirements)
-- [Installation](#installation)
-- [Data Preparation](#data-preparation)
-- [Usage](#usage)
-- [Model Training](#model-training)
 - [Contact](#contact)
 
 ## Overview
