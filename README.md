@@ -45,6 +45,8 @@ This repository is structured to facilitate access to the various components of 
 
 
 - **/Preprocessing/**: Contains scripts for preprocessing inputs to the models.
+  - **01-Preprocessing_Input.ipynb**: The script is used for preprocess patient claims and create aggregated encounters.
+  - **02-Generate_Model_Input.py**: The script generates final model input.
 
 - **/Mapping_Files/**: This directory contains the mapping files used for diagnoses, procedure, and medications .
 
