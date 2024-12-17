@@ -27,17 +27,17 @@ The progression from MCI to AD is a crucial area of research as early prediction
    Diagnoses are mapped into Phecodes. Procedures are converted to CCS (Clinical Classification Software) Codes. Medications NDC are mapped to generic Names.     
    
 2. **Constructs patient-level longitudinal data:**
-   Claims data are grouped and converted into encounters every 15 days before the index date to construct model input. This input is processed and converted into train/validation/test datasets and saved in .pkl files
+   Patient claims are aggreagated into 15-day encounter periods leading up to the index date. The data are then split into training, validation, and testing sets, serialized into .pkl files for subsequent modeling.
 
-3. **Compare BiGRU deep learning and four machine learning models (Light Gradient Boosting Machine (LGBM), XGBoost, Logistic Regression (LR), and Random Forest (RF)):**  
-  BiGRU sequential model is implemented to handle the longitudinal nature of the data, capturing temporal patterns and trends in patient health trajectories.
-  Light Gradient Boosting Machine (LGBM), XGBoost, Logistic Regression (LR), and Random Forest (RF) are implemented as baselines
+3. **Evaluates the efficacy of a BiGRU (Bidirectional Gated Recurrent Unit) model against four traditional machine learning algorithm:**  
+   BiGRU: Tailored to address the longitudinal nature of data, capturing temporal trends in patient health trajectories.
+   Baseline Models: Includes Light Gradient Boosting Machine (LGBM), XGBoost, Logistic Regression (LR), and Random Forest (RF), providing a comprehensive comparison across various modeling techniques.
 
-4. **Optimize model performance using Optuna:**  
-  Hyperparameter tuning is automated with Optuna, using 5-fold cross validation ensuring optimal model configurations and improved predictive accuracy.
+4. **Optimizes model performance using Optuna:**  
+   Hyperparameter tuning is automated with Optuna, using 5-fold cross validation ensuring optimal model configurations and improved predictive accuracy.
 
 5. **Generates metrics**  
-  The pipeline outputs performance metrics, helping users assess and interpret the predictive capabilities of the models.
+   Optuna is utilized for hyperparameter tuning, employing a 5-fold cross-validation approach to ensure that each model configuration is optimized for the highest predictive accuracy.
 
 The code is designed to integrate different lookback windows (e.g., 365 days, 730 days, etc.) before the index date to tailor prediction horizons and patient stratification based on disease onset. By adjusting these time windows, users can tailor prediction horizons and patient stratification strategies based on disease onset.
 
