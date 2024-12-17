@@ -49,28 +49,18 @@ This repository is structured to facilitate access to the various components of 
 
 - **/Mapping_Files/**: This directory contains the mapping files used for diagnoses, procedure, and medications .
 
-- **/Models_CV_Optuna/**: Contains the implementation of the BiGRU model and other baseline model architectures including Optuna and cross validation code.
+- **/Models_CV_Optuna/**: Contains the implementation of the BiGRU model and other baseline model architectures including hyperparameter optimization and cross validation code.
   - **BiGRU_model.py**: The script where the BiGRU model is implemented.
   - **LGBM_model.py**: The script where the Light Gradient Boosting Machine model is implemented.
   - **XGBoost_model.py**: The script where the XGBoost model is implemented.
   - **RF_model.py**: The script where the Random Forest model is implemented.
   - **LR_model.py**: The script where the Logistic Regression model is implemented.
 
-- **/utils/**: Includes utility scripts that support data handling and model evaluation.
-  - **data_preprocessing.py**: Scripts to preprocess raw data into a format ready for modeling.
-  - **metrics.py**: Functions for computing various performance metrics like AUC and accuracy.
-  - **visualization.py**: Functions to generate visualizations such as ROC curves and confusion matrices.
-
-- **/experiments/**: Contains scripts for model training, evaluation, and hyperparameter optimization.
-  - **hyperparam_optimization.py**: Contains routines for tuning model parameters using Optuna.
-  - **train.py**: Scripts for training models with specified parameters.
-  - **evaluate.py**: Scripts for evaluating the performance of trained models on the test set.
+- **/Model_Inference_Evaluation/**: Contains scripts for final model training, evaluation and functions for computing various performance metrics.
 
 - **requirements.txt**: A file listing all Python libraries required by the project.
 
 - **README.md**: Provides an overview and instructions for navigating and utilizing the repository.
-
-- **LICENSE**: Contains the license under which this project is released.
 
 ## Getting Started
 
