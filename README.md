@@ -36,8 +36,8 @@ The progression from MCI to AD is a crucial area of research as early prediction
 4. **Optimizes model performance using Optuna:**  
    Hyperparameter tuning is automated with Optuna, using 5-fold cross validation ensuring optimal model configurations and improved predictive accuracy.
 
-5. **Generates metrics**  
-   Optuna is utilized for hyperparameter tuning, employing a 5-fold cross-validation approach to ensure that each model configuration is optimized for the highest predictive accuracy.
+5. **Calculates various performance metrics**  
+   The pipeline outputs a suite of performance metrics, enabling users to evaluate and compare the predictive effectiveness of each model implemented.
 
 The code is designed to integrate different lookback windows (e.g., 365 days, 730 days, etc.) before the index date to tailor prediction horizons and patient stratification based on disease onset. By adjusting these time windows, users can tailor prediction horizons and patient stratification strategies based on disease onset.
 
