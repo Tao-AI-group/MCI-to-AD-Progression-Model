@@ -49,8 +49,12 @@ This repository is structured to facilitate access to the various components of 
 
 - **/Mapping_Files/**: This directory contains the mapping files used for diagnoses, procedure, and medications .
 
-- **/Models_CV_Optuna/**: Contains the implementation of the BiGRU model and other baseline model architectures .
+- **/Models_CV_Optuna/**: Contains the implementation of the BiGRU model and other baseline model architectures including Optuna and cross validation code.
   - **BiGRU_model.py**: The script where the BiGRU model is implemented.
+  - **LGBM_model.py**: The script where the Light Gradient Boosting Machine model is implemented.
+  - **XGBoost_model.py**: The script where the XGBoost model is implemented.
+  - **RF_model.py**: The script where the Random Forest model is implemented.
+  - **LR_model.py**: The script where the Logistic Regression model is implemented.
 
 - **/utils/**: Includes utility scripts that support data handling and model evaluation.
   - **data_preprocessing.py**: Scripts to preprocess raw data into a format ready for modeling.
