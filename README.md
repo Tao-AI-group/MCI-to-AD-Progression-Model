@@ -43,6 +43,9 @@ The code leverages patient data from 5 years prior to the index date to evaluate
 
 This repository is structured to facilitate access to the various components of the MCI-to-AD progression model. Below is an overview of the directory and file organization:
 
+
+- **/Preprocessing/**: Contains scripts for preprocessing inputs to the models.
+
 - **/Mapping_Files/**: This directory contains the mapping files used for diagnoses, procedure, and medications .
 
 - **/Models_CV_Optuna/**: Contains the implementation of the BiGRU model and other baseline model architectures including hyperparameter optimization and cross validation code.
