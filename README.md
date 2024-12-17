@@ -21,23 +21,26 @@ This repository provides code and pipelines for predicting the progression from 
 - [Contact](#contact)
 
 ## Overview
-# Predicting Progression from MCI to AD
+The progression from MCI to AD is a crucial area of research as early prediction can enable timely therapeutic interventions. This repository operationalizes a pipeline that:
 
-The progression from Mild Cognitive Impairment (MCI) to Alzheimer’s Disease (AD) is a crucial area of research. Early prediction can enable timely therapeutic interventions and improve patient outcomes. This repository provides a pipeline designed to:
+1. **Preprocesses patient claims data including**:  Age, Gender, Diagnoses, Procedures and Medications
+   Diagnoses are mapped into Phecodes. Procedures are converted to CCS (Clinical Classification Software) Codes. Medications NDC are mapped to generic Names.     
+   
+2. **Constructs patient-level longitudinal data:**
+   Claims data are grouped and converted into encounters every 15 days before the index date. Model input is processed and converted into train/validation/test datasets and saved in .pkl files
 
-- **Load patient-level longitudinal data:**  
-  The code starts with preprocessed pickle files containing patient visits and associated clinical events or measurements.
+3. **Loads patient-level longitudinal data** from preprocessed pickle files. 
 
-- **Train deep learning models on time-series data:**  
-  Sequential models are implemented to handle the longitudinal nature of the data, capturing temporal patterns and trends in patient health trajectories.
+4. **Train BiGRU deep learning and four machine learning models on time-series data:**  
+  BiGRU sequential model is implemented to handle the longitudinal nature of the data, capturing temporal patterns and trends in patient health trajectories.
 
-- **Optimize model performance using Optuna:**  
-  Hyperparameter tuning is automated with Optuna, ensuring optimal model configurations and improved predictive accuracy.
+5. **Optimize model performance using Optuna:**  
+  Hyperparameter tuning is automated with Optuna, using 5-fold cross validation ensuring optimal model configurations and improved predictive accuracy.
 
-- **Generate metrics**  
+6. **Generate metrics**  
   The pipeline outputs performance metrics, helping users assess and interpret the predictive capabilities of the models.
 
-This repository is designed to accommodate various lookback windows (e.g., 365 days, 730 days, etc.) before the index date. By adjusting these time windows, users can tailor prediction horizons and patient stratification strategies based on disease onset.
+The code is designed to integrate different lookback windows (e.g., 365 days, 730 days, etc.) before the index date to tailor prediction horizons and patient stratification based on disease onset. By adjusting these time windows, users can tailor prediction horizons and patient stratification strategies based on disease onset.
 
 
 ## Features
