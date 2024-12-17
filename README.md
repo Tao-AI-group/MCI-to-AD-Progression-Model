@@ -27,17 +27,16 @@ The progression from MCI to AD is a crucial area of research as early prediction
    Diagnoses are mapped into Phecodes. Procedures are converted to CCS (Clinical Classification Software) Codes. Medications NDC are mapped to generic Names.     
    
 2. **Constructs patient-level longitudinal data:**
-   Claims data are grouped and converted into encounters every 15 days before the index date. Model input is processed and converted into train/validation/test datasets and saved in .pkl files
+   Claims data are grouped and converted into encounters every 15 days before the index date to construct model input. This input is processed and converted into train/validation/test datasets and saved in .pkl files
 
-3. **Loads patient-level longitudinal data** from preprocessed pickle files. 
-
-4. **Train BiGRU deep learning and four machine learning models on time-series data:**  
+3. **Compare BiGRU deep learning and four machine learning models (Light Gradient Boosting Machine (LGBM), XGBoost, Logistic Regression (LR), and Random Forest (RF)):**  
   BiGRU sequential model is implemented to handle the longitudinal nature of the data, capturing temporal patterns and trends in patient health trajectories.
+  Light Gradient Boosting Machine (LGBM), XGBoost, Logistic Regression (LR), and Random Forest (RF) are implemented as baselines
 
-5. **Optimize model performance using Optuna:**  
+4. **Optimize model performance using Optuna:**  
   Hyperparameter tuning is automated with Optuna, using 5-fold cross validation ensuring optimal model configurations and improved predictive accuracy.
 
-6. **Generate metrics**  
+5. **Generates metrics**  
   The pipeline outputs performance metrics, helping users assess and interpret the predictive capabilities of the models.
 
 The code is designed to integrate different lookback windows (e.g., 365 days, 730 days, etc.) before the index date to tailor prediction horizons and patient stratification based on disease onset. By adjusting these time windows, users can tailor prediction horizons and patient stratification strategies based on disease onset.
