@@ -59,15 +59,9 @@ This repository is structured to facilitate access to the various components of 
 
 - **/Model_Inference_Evaluation/**: Contains scripts for final model training, evaluation and functions for computing various performance metrics.
 
-- **requirements.txt**: A file listing all Python libraries required by the project.
+- **requirements.txt**: A file listing primary Python libraries required by the project.
 
 - **README.md**: Provides an overview and instructions for navigating and utilizing the repository.
-
-## Getting Started
-
-To get started with this repository, follow these steps:
-
-1. Clone the repository:
 
 
 
