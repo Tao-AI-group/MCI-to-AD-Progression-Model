@@ -7,7 +7,6 @@ This repository provides code and pipelines for predicting the progression from 
 ## Table of Contents
 - [Overview](#overview)
 - [Repository Structure](#repository-structure)
-- [Requirements](#requirements)
 - [Contact](#contact)
 
 ## Overview
@@ -36,9 +35,6 @@ The progression from Mild Cognitive Impairment (MCI) to Alzheimer's Disease (AD)
 The code leverages patient data from 5 years prior to the index date to evaluate the model's predictive accuracy of MCI-to-AD progression across multiple time horizons: one, two, three, and five years from the index date.
 
 
-
-
-
 ## Repository Structure
 
 This repository is structured to facilitate access to the various components of the MCI-to-AD progression model. Below is an overview of the directory and file organization:
@@ -63,7 +59,7 @@ This repository is structured to facilitate access to the various components of 
 
 - **README.md**: Provides an overview and instructions for navigating and utilizing the repository.
 
-
-
+## Contact
+For questions please contact: Ahmed Abdelhameed abdelhameed.ahmed@mayo.edu
 
 
