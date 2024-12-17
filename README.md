@@ -6,48 +6,75 @@ This repository provides code and pipelines for predicting the progression from 
 
 ## Table of Contents
 - [Overview](#overview)
-- [Features](#features)
 - [Repository Structure](#repository-structure)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Data Preparation](#data-preparation)
 - [Usage](#usage)
 - [Model Training](#model-training)
-- [Evaluation](#evaluation)
-- [Results](#results)
-- [Customization](#customization)
-- [Citing This Work](#citing-this-work)
-- [License](#license)
 - [Contact](#contact)
 
 ## Overview
-The progression from MCI to AD is a crucial area of research as early prediction can enable timely therapeutic interventions. This repository operationalizes a pipeline that:
 
-1. **Preprocesses patient claims data including**:  Age, Gender, Diagnoses, Procedures and Medications
-   Diagnoses are mapped into Phecodes. Procedures are converted to CCS (Clinical Classification Software) Codes. Medications NDC are mapped to generic Names.     
-   
-2. **Constructs patient-level longitudinal data:**
-   Patient claims are aggreagated into 15-day encounter periods leading up to the index date. The data are then split into training, validation, and testing sets, serialized into .pkl files for subsequent modeling.
+The progression from Mild Cognitive Impairment (MCI) to Alzheimer's Disease (AD) is a crucial area of research, as early prediction can facilitate timely therapeutic interventions. This repository houses a pipeline designed to operationalize such predictions by leveraging patient claims data. The pipeline includes the following stages:
 
-3. **Evaluates the efficacy of a BiGRU (Bidirectional Gated Recurrent Unit) model against four traditional machine learning algorithm:**  
-   BiGRU: Tailored to address the longitudinal nature of data, capturing temporal trends in patient health trajectories.
-   Baseline Models: Includes Light Gradient Boosting Machine (LGBM), XGBoost, Logistic Regression (LR), and Random Forest (RF), providing a comprehensive comparison across various modeling techniques.
+1. **Data Preprocessing**:
+   - **Age, Gender, Diagnoses, Procedures, and Medications**: Patient claims data are preprocessed where:
+     - Diagnoses are mapped to Phecodes.
+     - Procedures are converted to Clinical Classification Software (CCS) codes.
+     - Medications' National Drug Codes (NDC) are mapped to their generic names.
 
-4. **Optimizes model performance using Optuna:**  
-   Hyperparameter tuning is automated with Optuna, using 5-fold cross validation ensuring optimal model configurations and improved predictive accuracy.
+2. **Construction of Longitudinal Patient Data**:
+   - Patient claims are aggregated into 15-day encounter periods leading up to the index date. These longitudinal datasets are then segmented into training, validation, and testing sets, and serialized into `.pkl` files for model training and evaluation.
 
-5. **Calculates various performance metrics**  
-   The pipeline outputs a suite of performance metrics, enabling users to evaluate and compare the predictive effectiveness of each model implemented.
+3. **Model Evaluation**:
+   - **BiGRU (Bidirectional Gated Recurrent Unit)**: This deep learning model is specifically designed to address the longitudinal nature of the data, capturing temporal trends in patient health trajectories.
+   - **Baseline Models**: A comparative analysis is performed using traditional machine learning models including Light Gradient Boosting Machine (LGBM), XGBoost, Logistic Regression (LR), and Random Forest (RF).
 
-The code is designed to integrate different lookback windows (e.g., 365 days, 730 days, etc.) before the index date to tailor prediction horizons and patient stratification based on disease onset. By adjusting these time windows, users can tailor prediction horizons and patient stratification strategies based on disease onset.
+4. **Hyperparameter Optimization with Optuna**:
+   - Hyperparameter tuning is automated using Optuna, employing a 5-fold cross-validation scheme to ensure that model configurations are optimized for maximal predictive accuracy.
+
+5. **Performance Metrics Calculation**:
+   - A comprehensive suite of performance metrics is generated, enabling users to assess and compare the predictive capabilities of each model.
+
+The code leverages patient data from 5 years prior to the index date to evaluate the model's predictive accuracy of MCI-to-AD progression across multiple time horizons: one, two, three, and five years from the index date.
 
 
-## Features
-- **Data Handling:** Code for loading, cleaning, and preparing input data (e.g., medical imaging features, demographic information, cognitive assessments).
-- **Deep Learning Models:** Implementations of recurrent neural networks and attention-based models tailored for progression prediction.
-- **Hyperparameter Tuning:** Automated search for optimal configurations using Optuna.
-- **Metrics & Evaluation:** Various metrics (AUC, sensitivity, specificity, etc.) and plotting routines to evaluate model performance.
-- **Easy Customization:** Modular code structure, easily adaptable for other longitudinal prediction tasks.
+
+
 
 ## Repository Structure
+
+This repository is structured to facilitate access to the various components of the MCI-to-AD progression model. Below is an overview of the directory and file organization:
+
+- **/Mapping_Files/**: This directory contains the mapping files used for diagnoses, procedure, and medications .
+
+- **/Models_CV_Optuna/**: Contains the implementation of the BiGRU model and other baseline model architectures .
+  - **BiGRU_model.py**: The script where the BiGRU model is implemented.
+
+- **/utils/**: Includes utility scripts that support data handling and model evaluation.
+  - **data_preprocessing.py**: Scripts to preprocess raw data into a format ready for modeling.
+  - **metrics.py**: Functions for computing various performance metrics like AUC and accuracy.
+  - **visualization.py**: Functions to generate visualizations such as ROC curves and confusion matrices.
+
+- **/experiments/**: Contains scripts for model training, evaluation, and hyperparameter optimization.
+  - **hyperparam_optimization.py**: Contains routines for tuning model parameters using Optuna.
+  - **train.py**: Scripts for training models with specified parameters.
+  - **evaluate.py**: Scripts for evaluating the performance of trained models on the test set.
+
+- **requirements.txt**: A file listing all Python libraries required by the project.
+
+- **README.md**: Provides an overview and instructions for navigating and utilizing the repository.
+
+- **LICENSE**: Contains the license under which this project is released.
+
+## Getting Started
+
+To get started with this repository, follow these steps:
+
+1. Clone the repository:
+
+
+
+
 
