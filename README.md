@@ -4,6 +4,7 @@
 
 This repository provides code and pipelines for predicting the progression from Mild Cognitive Impairment (MCI) to Alzheimer’s Disease (AD) using deep learning models. The focus is on implementing and fine-tuning recurrent neural network models (particularly BiGRU-based architectures) on longitudinal claims datasets. By leveraging demographic information, and other clinical features, this project aims to identify patterns that can predict conversion from MCI to AD within specific time horizons.
 
+![alt text](https://raw.githubusercontent.com/Tao-AI-group/MCI-to-AD-Progression-Model/main/GA.svg)
 ## Table of Contents
 - [Overview](#overview)
 - [Repository Structure](#repository-structure)
