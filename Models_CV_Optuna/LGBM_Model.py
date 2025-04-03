@@ -55,7 +55,7 @@ def prepare_features(train_sl: List, valid_sl: List, input_size_1: List) -> Tupl
         features_tr.append(x)
     
     mlb = MultiLabelBinarizer(classes=range(input_size_1[0])[1:])
-    return mlb.fit_transform(features_tr), mlb.fit_transform(features_t)
+    return mlb.fit_transform(features_tr), np.array(labels_tr)
 
 def objective_LGBM(trial):
     """Optuna objective function for LightGBM optimization."""
